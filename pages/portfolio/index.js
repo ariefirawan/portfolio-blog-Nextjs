@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useGetPosts } from '../../actions';
 
 const Portfolios = () => {
-  const { posts, error } = useGetPosts();
+  const { posts, error } = useGetPosts('/api/v1/posts');
   const renderPosts = (posts) => {
     return posts.map((post) => (
       <li key={post.id} style={{ fontSize: '20px' }}>

@@ -1,19 +1,16 @@
-import { useRouter } from 'next/router';
-
 import { getUser } from '../actions/user';
+import Redirect from '../components/Redirect';
 import BaseLayout from '../components/BaseLayout';
 import BasePage from '../components/BasePage';
 
 const Secret = () => {
-  const router = useRouter();
   const { data, loading } = getUser();
 
   if (loading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
   if (!data) {
-    router.push('/api/v1/login');
-    return null;
+    return <Redirect to="/api/v1/login" />;
   } else {
     return (
       <BaseLayout>

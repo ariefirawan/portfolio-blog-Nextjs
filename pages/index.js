@@ -3,6 +3,8 @@ import BaseLayout from '../components/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed';
 
+import { getUser } from '../actions/user';
+
 const ROLES = [
   'Developer',
   'Tech Lover',
@@ -13,6 +15,7 @@ const ROLES = [
 ];
 
 const Index = () => {
+  const { data, error, loading } = getUser();
   return (
     <div>
       <BaseLayout className="cover">

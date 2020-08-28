@@ -1,5 +1,6 @@
 import BaseLayout from '../components/BaseLayout';
 import BasePage from '../components/BasePage';
+import WithAuth from '../hoc/WithAuth';
 
 const Blog = () => {
   return (
@@ -11,4 +12,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default WithAuth(Blog);

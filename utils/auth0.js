@@ -25,3 +25,17 @@ export const authorizeUser = async (req, res) => {
   }
   return session.user;
 };
+
+export const WithAuth = (getData) => async ({ req, res }) => {
+  const session = await auth0.getSession(req);
+  if (!session || !session.user) {
+    res.writeHead(302, {
+      Location: '/api/v1/login',
+    });
+    res.end();
+    return null;
+  }
+  const data = getData ? await getData() : {};
+
+  return { props: { user: session.user, ...data } };
+};

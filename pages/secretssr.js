@@ -1,6 +1,6 @@
 import BaseLayout from '../components/BaseLayout';
 import BasePage from '../components/BasePage';
-import auth0 from '../utils/auth0';
+import { authorizeUser } from '../utils/auth0';
 
 const Secretssr = ({ user }) => {
   return (
@@ -13,15 +13,8 @@ const Secretssr = ({ user }) => {
 };
 
 export const getServerSideProps = async ({ req, res }) => {
-  const session = await auth0.getSession(req);
-  if (!session || !session.user) {
-    res.writeHead(302, {
-      Location: '/api/login',
-    });
-    res.end();
-    return;
-  }
-  return { props: { user: session.user } };
+  const user = await authorizeUser(req, res);
+  return { props: { user } };
 };
 
 export default Secretssr;

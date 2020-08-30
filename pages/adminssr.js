@@ -6,7 +6,7 @@ const Secretssr = ({ user, title }) => {
   return (
     <BaseLayout user={user} loading={false}>
       <BasePage>
-        <h1>Secret Page {user && user.name}</h1>
+        <h1>adminssr Page {user && user.name}</h1>
         <h3>{title}</h3>
       </BasePage>
     </BaseLayout>
@@ -24,6 +24,6 @@ const getTitle = () => {
 export const getServerSideProps = WithAuth(async () => {
   const title = await getTitle();
   return title;
-})();
+})('admin');
 
 export default Secretssr;

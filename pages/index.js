@@ -16,6 +16,7 @@ const ROLES = [
 
 const Index = () => {
   const { data, error, loading } = getUser();
+  console.log(data);
   return (
     <div>
       <BaseLayout className="cover">

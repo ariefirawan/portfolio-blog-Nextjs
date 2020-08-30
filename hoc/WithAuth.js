@@ -1,17 +1,24 @@
 import { getUser } from '../actions/user';
 import Redirect from '../components/Redirect';
+import { isAuthorized } from '../utils/auth0';
 
-const WithAuth = (Component) => (props) => {
-  const { data, loading } = getUser();
+const WithAuth = (Component) => (role) => {
+  return (props) => {
+    const { data, loading } = getUser();
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-  if (!data) {
-    return <Redirect to="/api/v1/login" />;
-  } else {
-    return <Component user={data} loading={loading} {...props} />;
-  }
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (!data) {
+      return <Redirect ssr to="/api/v1/login" />;
+    } else {
+      if (role && !isAuthorized(data, role)) {
+        return <Redirect ssr to="/api/v1/login" />;
+      }
+
+      return <Component user={data} loading={loading} {...props} />;
+    }
+  };
 };
 
 export default WithAuth;

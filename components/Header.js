@@ -17,9 +17,17 @@ const BsNavsBrand = () => (
   </Link>
 );
 
-const LoginLink = () => <a className="nav-link port-navbar-link" href="/api/v1/login">Login</a>
+const LoginLink = () => (
+  <a className="nav-link port-navbar-link" href="/api/v1/login">
+    Login
+  </a>
+);
 
-const LogoutLink = () => <a className="nav-link port-navbar-link" href="/api/v1/logout">Logout</a>
+const LogoutLink = () => (
+  <a className="nav-link port-navbar-link" href="/api/v1/logout">
+    Logout
+  </a>
+);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +62,9 @@ const Header = () => {
             </NavItem>
             <NavItem className="port-navbar-item">
               <BsNavLink href="/secret" title="Secret" />
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <BsNavLink href="/admin" title="Admin" />
             </NavItem>
           </Nav>
           <Nav navbar>

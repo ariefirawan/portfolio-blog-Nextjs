@@ -1,12 +1,11 @@
 import BaseLayout from '../../components/BaseLayout';
 import BasePage from '../../components/BasePage';
 import Link from 'next/link';
-import { useGetPosts } from '../../actions';
+import PortfolioApi from '../../lib/api/portfolios';
 
-const Portfolios = () => {
+const Portfolios = ({ portfolios }) => {
   //default return dari swr itu data
-  const { data, error, loading } = useGetPosts();
-
+  console.log(portfolios);
   const renderPosts = (posts) => {
     return posts.map((post) => (
       <li key={post.id} style={{ fontSize: '20px' }}>
@@ -21,12 +20,18 @@ const Portfolios = () => {
     <BaseLayout>
       <BasePage>
         <h1>I am Portfolio Page</h1>
-        {loading && <p>Loading data...</p>}
-        {data && <ul>{renderPosts(data)}</ul>}
-        {error && <div className="alert alert-danger">{error.message}</div>}
+        <ul>{renderPosts([])}</ul>
       </BasePage>
     </BaseLayout>
   );
 };
+
+export async function getStaticProps() {
+  const json = await new PortfolioApi().getAll();
+  const portfolios = json.data;
+  return {
+    props: { portfolios },
+  };
+}
 
 export default Portfolios;

@@ -12,4 +12,4 @@ const Blog = () => {
   );
 };
 
-export default WithAuth(Blog);
+export default WithAuth(Blog)();

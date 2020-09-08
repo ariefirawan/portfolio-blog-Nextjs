@@ -19,7 +19,12 @@ const Index = () => {
   console.log(data);
   return (
     <div>
-      <BaseLayout className="cover" user={data} loading={loading}>
+      <BaseLayout
+        className="cover"
+        user={data}
+        loading={loading}
+        navClass="transparent"
+      >
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />

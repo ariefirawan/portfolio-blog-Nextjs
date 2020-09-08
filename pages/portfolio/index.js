@@ -11,7 +11,7 @@ const Portfolios = ({ portfolios }) => {
   //default return dari swr itu data
   return (
     <BaseLayout user={data}>
-      <BasePage className="portfolio-page">
+      <BasePage header="Portfolios" className="portfolio-page">
         <Row>
           {portfolios.map((portfolio) => (
             <Col key={portfolio._id} md="4">

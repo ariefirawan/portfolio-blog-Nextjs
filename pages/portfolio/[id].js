@@ -1,28 +1,22 @@
 import React from 'react';
-import { withRouter } from 'next/router';
-import { useRouter } from 'next/router';
-import { useGetPostByID } from '../../actions';
+import PortfolioApi from '../../lib/api/portfolios';
 
 import BaseLayout from '../../components/BaseLayout';
 import BasePage from '../../components/BasePage';
 
-const Portfolio = () => {
-  const router = useRouter();
-  const { data, error, loading } = useGetPostByID(router.query.id);
+const Portfolio = ({ portfolio }) => {
   return (
     <BaseLayout>
-      <BasePage>
-        {error && <div className="alert alert-danger">{error.message}</div>}
-        {loading && <p>Loading data..</p>}
-        {data && (
-          <>
-            <h1>Portfolio Page</h1>
-            <h4>{data.title}</h4>
-          </>
-        )}
-      </BasePage>
+      <BasePage>{JSON.stringify(portfolio)}</BasePage>
     </BaseLayout>
   );
 };
 
-export default withRouter(Portfolio);
+export async function getServerSideProps({ query }) {
+  const json = await new PortfolioApi().getById(query.id);
+  const portfolio = json.data;
+
+  return { props: { portfolio } };
+}
+
+export default Portfolio;

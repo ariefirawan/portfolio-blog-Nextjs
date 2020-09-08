@@ -2,25 +2,23 @@ import BaseLayout from '../../components/BaseLayout';
 import BasePage from '../../components/BasePage';
 import Link from 'next/link';
 import PortfolioApi from '../../lib/api/portfolios';
+import PortfilioCard from '../../components/PortfolioCard';
+import { getUser } from '../../actions/user';
+import { Row, Col } from 'reactstrap';
 
 const Portfolios = ({ portfolios }) => {
+  const { data, loading } = getUser();
   //default return dari swr itu data
-  console.log(portfolios);
-  const renderPosts = (posts) => {
-    return posts.map((post) => (
-      <li key={post.id} style={{ fontSize: '20px' }}>
-        <Link as={`/portfolio/${post.id}`} href="/portfolio/[id]">
-          <a>{post.title}</a>
-        </Link>
-      </li>
-    ));
-  };
-
   return (
-    <BaseLayout>
-      <BasePage>
-        <h1>I am Portfolio Page</h1>
-        <ul>{renderPosts([])}</ul>
+    <BaseLayout user={data}>
+      <BasePage className="portfolio-page">
+        <Row>
+          {portfolios.map((portfolio) => (
+            <Col key={portfolio._id} md="4">
+              <PortfilioCard portfolio={portfolio} />
+            </Col>
+          ))}
+        </Row>
       </BasePage>
     </BaseLayout>
   );

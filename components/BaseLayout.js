@@ -1,12 +1,7 @@
 import Header from './Header';
 
-const BaseLayout = ({
-  children,
-  className,
-  navClass = 'with-bg',
-  user,
-  loading,
-}) => {
+const BaseLayout = (props) => {
+  const { className, user, navClass = 'with-bg', loading, children } = props;
   return (
     <div className="layout-container">
       <Header className={navClass} user={user} loading={loading} />

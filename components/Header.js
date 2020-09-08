@@ -37,7 +37,6 @@ const Header = ({ user, loading, className }) => {
     <div>
       <Navbar
         className={`port-navbar port-default absolute ${className}`}
-        color="transparent"
         dark
         expand="md"
       >

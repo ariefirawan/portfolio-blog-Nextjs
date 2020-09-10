@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import DatePicker from 'react-datepicker';
 
 const PortfolioForm = ({ onSubmit }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
+  useEffect(() => {
+    register({ name: 'startDate' });
+    register({ name: 'endDate' });
+  }, [register]);
+
+  const handleChangeDate = (dateType, setDate) => (date) => {
+    setValue(dateType, date);
+    setDate(date);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -74,12 +88,51 @@ const PortfolioForm = ({ onSubmit }) => {
 
       <div className="form-group">
         <label htmlFor="street">Start Date</label>
-        <div>{/* Date picker here */}</div>
+        <div>
+          <DatePicker
+            showYearDropdown
+            selected={startDate}
+            onChange={handleChangeDate('startDate', setStartDate)}
+          />
+        </div>
       </div>
 
       <div className="form-group">
         <label htmlFor="street">End Date</label>
-        <div>{/* Date picker here */}</div>
+        <div>
+          <DatePicker
+            disabled={!endDate}
+            showYearDropdown
+            selected={endDate}
+            onChange={handleChangeDate('endDate', setEndDate)}
+          />
+        </div>
+      </div>
+      <div className="form-group">
+        {endDate && (
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => handleChangeDate('endDate', setEndDate)(null)}
+          >
+            No end date
+          </button>
+        )}
+
+        {!endDate && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() =>
+              handleChangeDate(
+                'endDate',
+                setEndDate
+              )(new Date(new Date().setHours(0, 0, 0, 0)))
+            }
+          >
+            Set end date
+          </button>
+        )}
       </div>
       <button type="submit" className="btn btn-primary">
         Create

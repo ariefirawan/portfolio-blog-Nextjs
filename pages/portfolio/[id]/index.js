@@ -1,8 +1,8 @@
 import React from 'react';
-import PortfolioApi from '../../lib/api/portfolios';
+import PortfolioApi from '../../../lib/api/portfolios';
 
-import BaseLayout from '../../components/BaseLayout';
-import BasePage from '../../components/BasePage';
+import BaseLayout from '../../../components/BaseLayout';
+import BasePage from '../../../components/BasePage';
 
 const Portfolio = ({ portfolio }) => {
   return (

@@ -5,10 +5,12 @@ const auth0 = initAuth0({
   clientId: process.env.AUTH0_CLIENTID,
   clientSecret: process.env.AUTH0_CLIENTSECRET,
   scope: 'openid profile',
-  redirectUri: process.env.AUTh0_REDIRECT_URI,
+  audience: process.env.AUTH0_AUDIENCE,
+  redirectUri: process.env.AUTH0_REDIRECT_URI,
   postLogoutRedirectUri: process.env.AUTH0_POST_LOGOUT_URI,
   session: {
     cookieSecret: process.env.AUTH0_COOKIE_SECRET,
+    storeAccessToken: true,
   },
 });
 

@@ -34,7 +34,7 @@ export function useApiHandler(apicall) {
       });
     } catch (e) {
       const message =
-        (e.response && e.response.message) || 'ops..., something went wrong';
+        (e.response && e.response.data) || 'ops..., something went wrong';
       setReqState({
         data: null,
         loading: false,

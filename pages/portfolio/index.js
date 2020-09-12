@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import BaseLayout from '../../components/BaseLayout';
-import BasePage from '../../components/BasePage';
+import BaseLayout from 'components/BaseLayout';
+import BasePage from 'components/BasePage';
 import { useRouter } from 'next/router';
-import PortfolioApi from '../../lib/api/portfolios';
-import PortfilioCard from '../../components/PortfolioCard';
-import { getUser } from '../../actions/user';
-import { useDeletePortfolio } from '../../actions/portfolios';
+import PortfolioApi from 'lib/api/portfolios';
+import PortfilioCard from 'components/PortfolioCard';
+import { getUser } from 'actions/user';
+import { useDeletePortfolio } from 'actions/portfolios';
 import { Row, Col, Button } from 'reactstrap';
-import { isAuthorized } from '../../utils/auth0';
+import { isAuthorized } from 'utils/auth0';
 
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const [portfolios, setPorfolios] = useState(initialPortfolios);
@@ -38,7 +38,7 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
               md="4"
             >
               <PortfilioCard portfolio={portfolio}>
-                {dataU && (
+                {dataU && isAuthorized(dataU, 'admin') && (
                   <>
                     <Button
                       className="mr-2"

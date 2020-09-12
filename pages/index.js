@@ -1,9 +1,9 @@
 import React from 'react';
-import BaseLayout from '../components/BaseLayout';
+import BaseLayout from 'components/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed';
 
-import { getUser } from '../actions/user';
+import { getUser } from 'actions/user';
 
 const ROLES = [
   'Developer',

@@ -1,12 +1,12 @@
-import BaseLayout from '../../../components/BaseLayout';
-import BasePage from '../../../components/BasePage';
-import withAuth from '../../../hoc/WithAuth';
+import BaseLayout from 'components/BaseLayout';
+import BasePage from 'components/BasePage';
+import withAuth from 'hoc/WithAuth';
 import { useRouter } from 'next/router';
 import {
   useUpdatePortfolio,
   useGetPortfolio,
-} from '../../../actions/portfolios';
-import PortfolioForm from '../../../components/PortfolioForm';
+} from 'actions/portfolios';
+import PortfolioForm from 'components/PortfolioForm';
 import { Row, Col } from 'reactstrap';
 
 const PortfolioEdit = ({ user }) => {

@@ -1,6 +1,6 @@
-import BaseLayout from '../../components/BaseLayout';
-import BasePage from '../../components/BasePage';
-import withAuth from '../../hoc/WithAuth';
+import BaseLayout from 'components/BaseLayout';
+import BasePage from 'components/BasePage';
+import withAuth from 'hoc/WithAuth';
 
 const Dashboard = ({ user, loading }) => {
   return (

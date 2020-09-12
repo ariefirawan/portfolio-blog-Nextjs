@@ -1,6 +1,6 @@
-import BaseLayout from '../components/BaseLayout';
-import BasePage from '../components/BasePage';
-import WithAuth from '../hoc/WithAuth';
+import BaseLayout from 'components/BaseLayout';
+import BasePage from 'components/BasePage';
+import WithAuth from 'hoc/WithAuth';
 
 const Admin = ({ user, loading }) => {
   console.log(user);

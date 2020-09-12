@@ -1,6 +1,6 @@
-import BaseLayout from '../components/BaseLayout';
-import BasePage from '../components/BasePage';
-import { WithAuth } from '../utils/auth0';
+import BaseLayout from 'components/BaseLayout';
+import BasePage from 'components/BasePage';
+import { WithAuth } from 'utils/auth0';
 
 const Secretssr = ({ user, title }) => {
   return (

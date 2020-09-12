@@ -1,6 +1,6 @@
-import { getUser } from '../actions/user';
-import Redirect from '../components/Redirect';
-import { isAuthorized } from '../utils/auth0';
+import { getUser } from 'actions/user';
+import Redirect from 'components/Redirect';
+import { isAuthorized } from 'utils/auth0';
 
 const WithAuth = (Component) => (role) => {
   return (props) => {

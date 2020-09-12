@@ -147,7 +147,7 @@ const PortfolioForm = ({ onSubmit, initialData = {} }) => {
         )}
       </div>
       <button type="submit" className="btn btn-primary">
-        Create
+        Save
       </button>
     </form>
   );

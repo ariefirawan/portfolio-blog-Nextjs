@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
 
 const BsNavLink = (props) => {
-  const { href, title } = props;
+  const { href, title, className = '' } = props;
   return (
     <Link href={href}>
-      <a className="nav-link port-navbar-link">{title}</a>
+      <a className={`nav-link port-navbar-link ${className}`}>{title}</a>
     </Link>
   );
 };
@@ -28,6 +38,31 @@ const LogoutLink = () => (
     Logout
   </a>
 );
+
+const AdminMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Dropdown
+      className="port-navbar-link port-dropdown-menu"
+      nav
+      isOpen={isOpen}
+      toggle={() => setIsOpen(!isOpen)}
+    >
+      <DropdownToggle className="port-dropdown-toggle" nav caret>
+        Admin
+      </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>
+          <BsNavLink
+            className="port-dropdown-item"
+            href="/portfolio/new"
+            title="Create Portfolio"
+          />
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+  );
+};
 
 const Header = ({ user, loading, className }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,20 +94,23 @@ const Header = ({ user, loading, className }) => {
             <NavItem className="port-navbar-item">
               <BsNavLink href="/cv" title="Cv" />
             </NavItem>
-            <NavItem className="port-navbar-item">
+            {/* <NavItem className="port-navbar-item">
               <BsNavLink href="/secret" title="Secret" />
             </NavItem>
             <NavItem className="port-navbar-item">
               <BsNavLink href="/admin" title="Admin" />
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <Nav navbar>
             {!loading && (
               <>
                 {user && (
-                  <NavItem className="port-navbar-item">
-                    <LogoutLink />
-                  </NavItem>
+                  <>
+                    <AdminMenu />
+                    <NavItem className="port-navbar-item">
+                      <LogoutLink />
+                    </NavItem>
+                  </>
                 )}
                 {!user && (
                   <NavItem className="port-navbar-item">

@@ -14,14 +14,14 @@ export const fetcher = (url) =>
 export function useApiHandler(apicall) {
   const [reqState, setReqState] = useState({
     data: null,
-    loading: true,
+    loading: false,
     error: null,
   });
 
   const handler = async (...data) => {
     setReqState({
       data: null,
-      loading: false,
+      loading: true,
       error: null,
     });
 
@@ -32,6 +32,7 @@ export function useApiHandler(apicall) {
         loading: false,
         error: null,
       });
+      return json.data;
     } catch (e) {
       const message =
         (e.response && e.response.data) || 'ops..., something went wrong';
@@ -40,6 +41,7 @@ export function useApiHandler(apicall) {
         loading: false,
         error: message,
       });
+      return Promise.reject(message);
     }
   };
 

@@ -6,7 +6,7 @@ export default async function createPortfolio(req, res) {
     const { accessToken } = await auth0.getSession(req);
     console.log(accessToken);
     const portfolioData = req.body;
-    const json = await new PortfolioApi(accessToken).createPortfolio(
+    const json = await new PortfolioApi(accessToken).create(
       portfolioData
     );
     return res.json(json.data);

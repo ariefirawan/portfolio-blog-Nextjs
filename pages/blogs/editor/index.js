@@ -13,7 +13,7 @@ const BlogEditor = ({ user, loading }) => {
     { data: dataCreated, error, loading: loadingBlog },
   ] = useCreateBlog();
   const saveBlog = async (data) => {
-    const created = await create(data);
+    const created = await createBlog(data);
     router.push('/blogs/editor/[id]', `/blogs/editor/${created._id}`);
     if (error) {
       toast.error(error.message);

@@ -2,10 +2,16 @@ import BaseLayout from 'components/BaseLayout';
 import BasePage from 'components/BasePage';
 import withAuth from 'hoc/WithAuth';
 import { Editor } from 'slate-simple-editor';
+import { useCreateBlog } from 'actions/blogs';
+import { toast } from 'react-toastify';
 
 const BlogEditor = ({ user, loading }) => {
-  const saveBlog = (data) => {
-    console.log(data);
+  const [createBlog, { data: dataCreated, error }] = useCreateBlog();
+  const saveBlog = async (data) => {
+    await createBlog(data);
+    if (error) {
+      toast.error(error.message);
+    }
   };
 
   return (

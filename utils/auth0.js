@@ -45,7 +45,7 @@ export const WithAuth = (getData) => (role) => async ({ req, res }) => {
     res.end();
     return null;
   }
-  const data = getData ? await getData() : {};
+  const data = getData ? await getData({ req, res }, session.user) : {};
 
   return { props: { user: session.user, ...data } };
 };

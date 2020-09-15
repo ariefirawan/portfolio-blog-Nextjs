@@ -1,7 +1,7 @@
 import BaseLayout from 'components/BaseLayout';
 import BasePage from 'components/BasePage';
 import Link from 'next/link';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import PortDropdown from 'components/Dropdown.js';
 import Masthead from 'components/Masthead';
 import { useUpdateBlog, useGetUserBlogs } from 'actions/blogs';
@@ -63,7 +63,15 @@ const Dashboard = ({ user, loading }) => {
   );
   return (
     <BaseLayout navClass="transparent" user={user} loading={loading}>
-      <Masthead imagePath="/images/home-bg.jpg" />
+      <Masthead imagePath="/images/home-bg.jpg">
+        <h1>Blogs Dashboard</h1>
+        <span className="subheading">
+          Let's write some nice blog today{' '}
+          <Link href="/blogs/editor">
+            <Button color="primary">Create a new Blog</Button>
+          </Link>
+        </span>
+      </Masthead>
       <BasePage className="blog-user-page">
         <Row>
           <Col md="6" className="mx-auto text-center">

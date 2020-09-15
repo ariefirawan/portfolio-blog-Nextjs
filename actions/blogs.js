@@ -17,3 +17,8 @@ export const useGetBlog = (id) => {
 
   return { data, loading: !data && !error, error, ...rest };
 };
+
+export const useGetUserBlogs = () => {
+  const { data, error, ...rest } = useSWR(`/api/v1/blogs/me`, fetcher);
+  return { data, error, loading: !data && !error, ...rest };
+};

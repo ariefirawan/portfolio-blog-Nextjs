@@ -11,7 +11,6 @@ export default class PortButtonDropdown extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
-    console.log(this.toggle);
     this.state = {
       dropdownOpen: false,
     };

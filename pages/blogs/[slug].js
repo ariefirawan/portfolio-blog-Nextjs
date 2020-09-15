@@ -1,10 +1,11 @@
 import BaseLayout from 'components/BaseLayout';
 import BasePage from 'components/BasePage';
 import { getUser } from 'actions/user';
-import BlogApi from 'lib/api/baseAPI';
+import BlogApi from 'lib/api/blogs';
 import { SlateView } from 'slate-simple-editor';
+import { Row, Col } from 'reactstrap';
 
-const Blog = () => {
+const Blog = ({ blog }) => {
   // console.log(props);
   const { data, loading } = getUser();
   return (

@@ -22,7 +22,7 @@ const Blog = ({ blogs }) => {
       <BasePage className="blog-body">
         <Row>
           {blogs.map((blog) => (
-            <Col key={blog.id} md="10" lg="8" className="mx-auto">
+            <Col key={blog._id} md="10" lg="8" className="mx-auto">
               <BlogItem blog={blog} />
               <hr></hr>
             </Col>

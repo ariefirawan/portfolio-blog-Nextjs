@@ -5,7 +5,7 @@ import 'slate-simple-editor/dist/index.css';
 import 'styles/main.scss';
 
 function MyApp({ Component, pageProps }) {
-  console.log(process.env.AUTH0_DOMAIN);
+  // console.log(process.env.AUTH0_DOMAIN);
   return <Component {...pageProps} />;
 }
 

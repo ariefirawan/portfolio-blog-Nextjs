@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BaseLayout from 'components/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed';
@@ -15,12 +15,24 @@ const ROLES = [
 ];
 
 const Index = () => {
+  const [isFlipping, setIsFlipping] = useState(false);
   const { data, error, loading } = getUser();
-  console.log(data);
+  const flipInterval = useRef();
+
+  useEffect(() => {
+    startAnimation();
+    return () => flipInterval.current && clearInterval(flipInterval.current);
+  }, []);
+
+  const startAnimation = () => {
+    flipInterval.current = setInterval(() => {
+      setIsFlipping((prevFlip) => !prevFlip);
+    }, 2000);
+  };
   return (
     <div>
       <BaseLayout
-        className="cover"
+        className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}
         user={data}
         loading={loading}
         navClass="transparent"
@@ -34,8 +46,8 @@ const Index = () => {
             <Row>
               <Col md="6">
                 <div className="hero-section">
-                  <div className={`flipper`}>
-                    <div className="back">
+                  <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
+                    <div className="front">
                       <div className="hero-section-content">
                         <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
@@ -44,6 +56,18 @@ const Index = () => {
                       </div>
                       <img className="image" src="/images/section-1.png" />
                       <div className="shadow-custom">
+                        <div className="shadow-inner"> </div>
+                      </div>
+                    </div>
+                    <div className="back">
+                      <div className="hero-section-content">
+                        <h2> Full Stack Web Developer </h2>
+                        <div className="hero-section-content-intro">
+                          Have a look at my portfolio and job history.
+                        </div>
+                      </div>
+                      <img className="image" src="/images/section-2.png" />
+                      <div className="shadow-custom shadow-custom-orange">
                         <div className="shadow-inner"> </div>
                       </div>
                     </div>

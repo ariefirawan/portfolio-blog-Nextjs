@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { isAuthorized } from 'utils/auth0';
+import ActiveLink from './ActiveLink';
 import {
   Collapse,
   Navbar,
@@ -12,14 +13,14 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import ReactResizeDetector from 'react-resize-detector';
+import ReactResizeDetector from 'react-resize-detector'; 
 
 const BsNavLink = (props) => {
   const { href, title, className = '' } = props;
   return (
-    <Link href={href}>
+    <ActiveLink activeClassName="active" href={href}>
       <a className={`nav-link port-navbar-link ${className}`}>{title}</a>
-    </Link>
+    </ActiveLink>
   );
 };
 

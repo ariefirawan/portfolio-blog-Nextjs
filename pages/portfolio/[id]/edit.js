@@ -2,10 +2,7 @@ import BaseLayout from 'components/BaseLayout';
 import BasePage from 'components/BasePage';
 import withAuth from 'hoc/WithAuth';
 import { useRouter } from 'next/router';
-import {
-  useUpdatePortfolio,
-  useGetPortfolio,
-} from 'actions/portfolios';
+import { useUpdatePortfolio, useGetPortfolio } from 'actions/portfolios';
 import PortfolioForm from 'components/PortfolioForm';
 import { Row, Col } from 'reactstrap';
 
@@ -19,7 +16,7 @@ const PortfolioEdit = ({ user }) => {
   };
   return (
     <BaseLayout user={user} loading={false}>
-      <BasePage header="portfolio Edit">
+      <BasePage title="Porfolio Edit" header="portfolio Edit">
         <Row>
           <Col md="8">
             {initialData && (

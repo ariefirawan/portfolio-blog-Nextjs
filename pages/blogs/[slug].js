@@ -10,7 +10,11 @@ const Blog = ({ blog }) => {
   const { data, loading } = getUser();
   return (
     <BaseLayout user={data} loading={loading}>
-      <BasePage className="slate-container">
+      <BasePage
+        title={`${blog.title}`}
+        className="slate-container"
+        metaDescription={blog.subTitle}
+      >
         <Row>
           <Col md={{ size: 8, offset: 2 }}>
             <SlateView initialContent={blog.content} />

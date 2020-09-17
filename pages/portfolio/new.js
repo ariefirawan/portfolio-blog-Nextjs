@@ -14,7 +14,7 @@ const NewPortfolio = ({ user, loading: userLoading }) => {
   }
   return (
     <BaseLayout user={user} loading={userLoading}>
-      <BasePage header="Create Portfolio">
+      <BasePage title="New Portfolio " header="Create Portfolio">
         <Row>
           <Col md="8">
             <PortfolioForm onSubmit={createPortfolio} />

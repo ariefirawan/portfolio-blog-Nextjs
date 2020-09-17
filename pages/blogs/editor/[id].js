@@ -22,7 +22,7 @@ const BlogUpdate = ({ user, loading: loadingUser }) => {
 
   return (
     <BaseLayout user={user} loading={loadingUser}>
-      <BasePage>
+      <BasePage title="Blog Editor">
         {data && data.content && (
           <Editor
             initialContent={data.content}

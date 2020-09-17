@@ -7,7 +7,12 @@ import BasePage from 'components/BasePage';
 const Portfolio = ({ portfolio }) => {
   return (
     <BaseLayout>
-      <BasePage>{JSON.stringify(portfolio)}</BasePage>
+      <BasePage
+        title={`${portfolio.title}`}
+        metaDescription={portfolio.description}
+      >
+        {JSON.stringify(portfolio)}
+      </BasePage>
     </BaseLayout>
   );
 };

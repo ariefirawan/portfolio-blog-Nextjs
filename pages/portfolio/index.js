@@ -26,7 +26,11 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
   //default return dari swr itu data
   return (
     <BaseLayout user={dataU} loading={loading}>
-      <BasePage header="Portfolios" className="portfolio-page">
+      <BasePage
+        title="Newest Portfolios"
+        header="Portfolios"
+        className="portfolio-page"
+      >
         {error && <div className="alert alert-danger mt-2">{error}</div>}
         <Row>
           {portfolios.map((portfolio) => (

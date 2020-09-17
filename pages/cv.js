@@ -7,7 +7,7 @@ const Cv = () => {
   const { data, loading } = getUser();
   return (
     <BaseLayout user={data} loading={loading}>
-      <BasePage>
+      <BasePage title="CV - Arief Irawan">
         <Row>
           <Col md={{ size: 8, offset: 2 }}>
             <iframe

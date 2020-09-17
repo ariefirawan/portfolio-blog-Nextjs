@@ -1,6 +1,13 @@
+import React from 'react';
 import { Container } from 'reactstrap';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
+const PageHeader = ({ header }) => (
+  <div className="page-header">
+    <h1 className="page-header-title">{header}</h1>
+  </div>
+);
 
 const BasePage = ({
   indexPage,
@@ -9,10 +16,12 @@ const BasePage = ({
   header,
   children,
   title,
+  noWrapper,
   metaDescription = 'My name is Filip Jerga and I am an experienced software engineer and freelance developer. Throughout my career, I have acquired advanced technical knowledge and the ability to explain programming topics clearly and in detail to a broad audience.',
 }) => {
   const router = useRouter();
   const pageType = indexPage ? 'index-page' : 'base-page';
+  const Wrapper = noWrapper ? React.Fragment : Container;
   return (
     <>
       <Head>
@@ -44,16 +53,17 @@ const BasePage = ({
             canonicalPath ? canonicalPath : router.asPath
           }`}
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
       </Head>
       <div className={`${pageType} ${className}`}>
-        <Container>
-          {header && (
-            <div className="page-header">
-              <h1 className="page-header-title">{header}</h1>
-            </div>
-          )}
+        <Wrapper>
+          {header && <PageHeader header={header} />}
           {children}
-        </Container>
+        </Wrapper>
       </div>
     </>
   );

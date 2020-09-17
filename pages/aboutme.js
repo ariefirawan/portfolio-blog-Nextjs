@@ -1,10 +1,10 @@
-import BaseLayout from 'components/layouts/BaseLayout';
+import BaseLayout from 'components/BaseLayout';
 import BasePage from 'components/BasePage';
-import { useGetUser } from '@/actions/user';
+import { getUser } from 'actions/user';
 import { Row, Col } from 'reactstrap';
 
 const AboutMe = () => {
-  const { data, loading } = useGetUser();
+  const { data, loading } = getUser();
 
   return (
     <BaseLayout user={data} loading={loading}>

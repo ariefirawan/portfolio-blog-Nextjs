@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 const BasePage = ({
   indexPage,
+  canonicalPath,
   className = '',
   header,
   children,
@@ -21,10 +22,28 @@ const BasePage = ({
         <meta name="title" key="title" content={title} />
         <meta property="og:title" key="og:title" content={title} />
         <meta property="og:locale" key="og:locale" content="en_EU" />
-        <meta property="og:url" key="og:url" content={`${process.env.BASE_URL}${router.asPath}`} />
+        <meta
+          property="og:url"
+          key="og:url"
+          content={`${process.env.BASE_URL}${router.asPath}`}
+        />
         <meta property="og:type" key="og:type" content="website" />
-        <meta property="og:description" key="og:description" content={metaDescription} />
-        <meta property="og:image" key="og:image" content={`${process.env.BASE_URL}/images/section-1.png`} />
+        <meta
+          property="og:description"
+          key="og:description"
+          content={metaDescription}
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={`${process.env.BASE_URL}/images/section-1.png`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.BASE_URL}${
+            canonicalPath ? canonicalPath : router.asPath
+          }`}
+        />
       </Head>
       <div className={`${pageType} ${className}`}>
         <Container>
